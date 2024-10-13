@@ -1,28 +1,29 @@
+### LUIS MERCADO ### 
 import numpy as np
 import matplotlib.pyplot as plt 
 from sklearn.linear_model import LinearRegression
 
 # Data
-months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-advertising_spending = np.array([1.2, 1.5, 1.9, 2.2, 2.4, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 4.5]).reshape(-1, 1)  # Reshape for sklearn
-# reshape for sklearn
-sales = np.array([58, 62, 67, 72, 77, 80, 82, 85, 88, 90, 95, 99])
+months = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021']
+ai_spending = np.array([3.2, 7.5, 9.9, 10.2, 12.4, 15.7, 20.0, 23.3, 26.6, 30.9, 34.2, 44.5]).reshape(-1, 1)  # Reshape for sklearn
+# Reshape for sklearn
+revenue = np.array([44, 32, 27, 22, 17, 16, 12, 10, 8, 4, 2, 0])
 
 # Scatter plot
 plt.figure(figsize=(10,6))
-plt.scatter(advertising_spending, sales, color="blue", label="Data")
-plt.xlabel("Advertising Spending ($K)")
-plt.ylabel("Sales (K Units)")
-plt.title("Advertising Spending vs Sales")
+plt.scatter(ai_spending, revenue, color="blue", label="Data")
+plt.xlabel("Money Spent in AI ($K)")
+plt.ylabel("Revenue (K Units)")
+plt.title("Money Spending vs Revenue")
 plt.grid(True)
 
 #Linear Regression
 regressor = LinearRegression()
-regressor.fit(advertising_spending, sales)
-predicted_sales = regressor.predict(advertising_spending)
+regressor.fit(ai_spending, revenue)
+predicted_sales = regressor.predict(ai_spending)
 
 # Plotting the regression Line
-plt.plot(advertising_spending, predicted_sales, color="red", label="Regression Line")
+plt.plot(ai_spending, predicted_sales, color="red", label="Regression Line")
 plt.legend()
 # Show Plot
 plt.show()
