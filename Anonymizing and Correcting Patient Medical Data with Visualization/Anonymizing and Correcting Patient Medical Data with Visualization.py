@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 # 1. Create a Sample dataset with sensitive information
 
@@ -23,6 +24,10 @@ df["Name"] = df["Patient_ID"]
 # 4. Introduce data Correction
 # Lets assume we discovered a billing error for the second patient
 df.loc[df["Patient_ID"] == "P002", "Medical_Bill"] = 2600
+
+diagnosis_code = {"Diabetes" : "D101", "Hypertension" : "D102", "Asthma": "D103" }
+# 4.5 Anonymize the diagnosis by using method replace
+df["Diagnosis"].replace(diagnosis_code, inplace=True)
 
 # 5. Visualize the corrected and anonymized dataset
 print("\n Anonymized and corrected Dataset:")
